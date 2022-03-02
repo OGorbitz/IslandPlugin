@@ -1,0 +1,26 @@
+#Database connection info. Needed to use this plugin!
+db_host: localhost
+db_port: 3306
+db_database: database_name
+db_username: username
+db_password: password
+
+#The plugin to use for protecting islands.
+#Griefprevention is currently not working
+#Supports "worldguard", "griefprevention", and "builtin"
+claimsplugin: builtin
+
+#The worldname that will be used for islands. 
+worldname: skycraft
+#The world where the plugin should send players
+spawnworld: world
+
+#The size of islands in the world
+islandsize: 150
+islandheight: 150
+
+#The protection message
+protected: You can't do this on other people's islands!
+
+#Debug mode (leave it off, this is for the developer)
+debug: false

@@ -1,0 +1,118 @@
+name: SkyCraft
+author: Mad3ngineer
+description: SkyCraft manages islands for skyblock. It uses MySQL to store player and island information.
+name: SkyCraft
+main: net.mad3ngineer.skycraft.SkyCraft
+depend: [WorldEdit,CleanroomGenerator,SQLibrary]
+softdepend: [WorldGuard,GriefPrevention]
+version: 1.0.0-SNAPSHOT
+
+commands:
+   island:
+      description: Island Operations.
+      usage:
+        /island home
+        /island sethome
+        /island accept
+        /island decline
+        /island delete
+        /island setbiome
+        /island visitable
+        /island invite <player>
+        /island kick <player>
+        /island visit <player>
+      permission: skycraft.island
+      permission-message: You don't have <permission>
+   islandev:
+      description: Admin Island Operations.
+      usage: /islandev [tp  delete  protect  sethome info] <player> {transfer <owner> <newowner>}
+      
+permissions:
+    skycraft.*:
+        description: Gives access to all skycraft commands
+        children:
+            skycraft.island.*: true
+            skycraft.islandev.*: true
+    skycraft.island.*:
+        description: Gives access to all user commands
+        children:
+            skycraft.island.home: true
+            skycraft.island.sethome: true
+            skycraft.island.visit: true
+            skycraft.island.visitable: true
+            skycraft.island.create: true
+            skycraft.island.accept: true
+            skycraft.island.decline: true
+            skycraft.island.kick: true
+            skycraft.island.leave: true
+            skycraft.island.delete: true
+            skycraft.island.create: true
+            skycraft.island.biome: true
+            skycraft.island: true
+    skycraft.island.home:
+        description: Go to island
+        default: false
+    skycraft.island.sethome:
+        description: Set island home
+        default: false
+    skycraft.island.visit:
+        description: Visit someone's island
+        default: false
+    skycraft.island.visitable:
+        description: Toggle your islands visitability
+        default: false
+    skycraft.island.accept:
+        description: Accept invite to island
+        default: false
+    skycraft.island.decline:
+        description: Decline island invite
+        default: false
+    skycraft.island.kick:
+        description: Kick a player from your island
+        default: false
+    skycraft.island.leave:
+        description: Leave your island
+        default: false
+    skycraft.island.delete:
+        description: Delete your island
+        default: false
+    skycraft.island.create:
+        description: Create a new island
+        default: false
+    skycraft.island.biome:
+        description: Set island biome
+        default: false
+
+    skycraft.islandev.*:
+        description: Gives access to all admin commands
+        default: op
+        children:
+            skycraft.islandev.tp: true
+            skycraft.islandev.transfer: true
+            skycraft.islandev.delete: true
+            skycraft.islandev.generate: true
+            skycraft.islandev.protect: true
+            skycraft.islandev.edit: true
+            skycraft.islandev.setspawn: true
+            skycraft.islandev.info: true
+    skycraft.islandev.tp:
+        description: Teleport to players islands
+        default: op
+    skycraft.islandev.transfer:
+        description: Transfer island ownership
+        default: op
+    skycraft.islandev.delete:
+        description: Force island deletion
+        default: op
+    skycraft.islandev.generate:
+        description: Generate an unowned island (For testing purposes)
+        default: op
+    skycraft.islandev.edit:
+        description: Always edit, even on other's islands.
+        default: op
+    skycraft.islandev.setspawn:
+        description: Set another player's island's spawn.
+        default: op
+    skycraft.islandev.info:
+        description: Shows information about the island you are standing in.
+        default: op
